@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>GoKeelai - Your Ride. Your Way. | Kilakarai Transportation</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colors */
+            --deep-navy: #0a2540;
+            --dark-navy: #000f22;
+            --professional-blue: #1c6295;
+            --light-blue: #e7eeff;
+            --input-bg: #f0f3ff;
+            --peach-accent: #ffdcc3;
+            --subtitle-text: #dee8ff;
+            --body-light: #d8e3fb;
+            --placeholder: #74777e;
+            --input-text: #111c2d;
+            --label-text: #43474d;
+            --pickup-dot: #1c6295;
+            --destination-dot: #3b1c00;
+            --light-blue-alt: #cee5ff;
+            --blue-alt: #8bc6ff;
+            --dark-blue-alt: #005283;
+            --light-blue-alt2: #dee8ff;
+            --peach-alt: #ffdcc3;
+
+            /* Shadows */
+            --hero-shadow: 0px 20px 40px -8px rgba(10,37,64,0.24);
+            --service-shadow: 0px 12px 32px -4px rgba(10,37,64,0.3);
+            --button-shadow: 0px 4px 6px -1px rgba(0,0,0,0.1), 0px 2px 4px -2px rgba(0,0,0,0.1);
+            --submit-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);
+
+            /* Spacing */
+            --spacing-4: 4px;
+            --spacing-8: 8px;
+            --spacing-12: 12px;
+            --spacing-16: 16px;
+            --spacing-24: 24px;
+            --spacing-32: 32px;
+            --spacing-48: 48px;
+
+            /* Typography */
+            --font-primary: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: white;
+            color: var(--label-text);
+            font-family: var(--font-primary);
+            scroll-padding-top: env(safe-area-inset-top, 0px);
+        }
+
+        :root {
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            z-index: 1000;
+            background: white;
+            border-bottom: 1px solid #f0f3ff;
+            padding: var(--spacing-16);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            font-family: var(--font-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--professional-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-24);
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--label-text);
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--professional-blue);
+        }
+
+        .header-cta {
+            display: flex;
+            gap: var(--spacing-12);
+            align-items: center;
+        }
+
+        .phone-link {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            text-decoration: none;
+        }
+
+        .book-btn {
+            background: var(--dark-navy);
+            color: white;
+            border: none;
+            padding: var(--spacing-8) var(--spacing-16);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            transition: background 0.3s;
+        }
+
+        .book-btn:hover {
+            background: #001530;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .header {
+                padding: var(--spacing-12);
+            }
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            position: relative;
+            min-height: 600px;
+            background: url('https://www.figma.com/api/mcp/asset/b7fbe809-7c39-44a6-a7d9-426c41ca5bee/733a4.png') center/cover no-repeat;
+            overflow: hidden;
+            padding: var(--spacing-48) var(--spacing-32);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,15,34,0.95), rgba(0,15,34,0.4)), linear-gradient(to top, #000f22, rgba(0,15,34,0));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-48);
+            align-items: center;
+        }
+
+        .hero-left {
+            color: white;
+        }
+
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-8);
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            padding: var(--spacing-8) var(--spacing-12);
+            border-radius: 32px;
+            margin-bottom: var(--spacing-16);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--subtitle-text);
+        }
+
+        .trust-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--peach-accent);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1.1px;
+            margin-bottom: var(--spacing-16);
+        }
+
+        .hero h1 .peach {
+            color: var(--peach-accent);
+        }
+
+        .hero-subtitle-1 {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--subtitle-text);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .hero-subtitle-2 {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--body-light);
+            margin-bottom: var(--spacing-24);
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-12);
+            margin-bottom: var(--spacing-24);
+        }
+
+        .hero-btn {
+            padding: var(--spacing-12) var(--spacing-16);
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-8);
+            transition: all 0.3s;
+        }
+
+        .hero-btn.primary {
+            background: #1c0a00;
+            color: white;
+        }
+
+        .hero-btn.primary:hover {
+            background: #2d1008;
+        }
+
+        .hero-btn.secondary {
+            background: var(--professional-blue);
+            color: white;
+        }
+
+        .hero-btn.secondary:hover {
+            background: #154678;
+        }
+
+        .hero-btn.tertiary {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            color: white;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .hero-btn.tertiary:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .trust-features {
+            display: flex;
+            gap: var(--spacing-16);
+            margin-bottom: var(--spacing-24);
+        }
+
+        .trust-feature {
+            display: flex;
+            gap: var(--spacing-8);
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--light-blue);
+        }
+
+        .trust-feature::before {
+            content: '✓';
+            width: 20px;
+            height: 20px;
+            background: rgba(28,98,149,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Hero Booking Card */
+        .booking-card {
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-24);
+            box-shadow: var(--hero-shadow);
+        }
+
+        .booking-card-header {
+            margin-bottom: var(--spacing-16);
+        }
+
+        .booking-card-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.55px;
+            text-transform: uppercase;
+            color: var(--professional-blue);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .booking-card-heading {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-navy);
+        }
+
+        .service-tabs {
+            display: flex;
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-16);
+        }
+
+        .service-tab {
+            flex: 1;
+            padding: var(--spacing-8);
+            background: var(--light-blue);
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--input-text);
+            font-family: var(--font-primary);
+            transition: all 0.3s;
+        }
+
+        .service-tab.active {
+            background: var(--dark-navy);
+            color: white;
+        }
+
+        .service-tab.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .booking-input-group {
+            margin-bottom: var(--spacing-12);
+        }
+
+        .booking-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.55px;
+            text-transform: uppercase;
+            color: var(--label-text);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .booking-label-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .booking-label-dot.pickup {
+            background: var(--pickup-dot);
+        }
+
+        .booking-label-dot.destination {
+            background: var(--destination-dot);
+        }
+
+        .booking-input {
+            width: 100%;
+            padding: var(--spacing-8) var(--spacing-12);
+            background: var(--input-bg);
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--input-text);
+            font-family: var(--font-primary);
+        }
+
+        .booking-input::placeholder {
+            color: var(--placeholder);
+        }
+
+        .booking-input:focus {
+            outline: none;
+            border-color: var(--professional-blue);
+            background: #ffffff;
+        }
+
+        .booking-disclaimer {
+            background: var(--light-blue);
+            border-radius: 8px;
+            padding: var(--spacing-8);
+            margin-bottom: var(--spacing-16);
+            font-size: 12px;
+            color: var(--input-text);
+            line-height: 1.5;
+            display: flex;
+            gap: var(--spacing-8);
+        }
+
+        .booking-submit {
+            width: 100%;
+            padding: var(--spacing-12) var(--spacing-16);
+            background: var(--dark-navy);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            box-shadow: var(--button-shadow);
+            transition: background 0.3s;
+        }
+
+        .booking-submit:hover {
+            background: #001530;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: var(--spacing-32) var(--spacing-16);
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: var(--spacing-16);
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .trust-badge {
+                font-size: 10px;
+            }
+            .hero-subtitle-1 {
+                font-size: 16px;
+            }
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .section {
+            padding: var(--spacing-48) var(--spacing-32);
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: var(--spacing-32);
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-16);
+            margin-bottom: var(--spacing-48);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-16);
+            box-shadow: var(--service-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 16px 40px -4px rgba(10,37,64,0.2);
+        }
+
+        .service-card.highlighted {
+            border: 2px solid var(--professional-blue);
+        }
+
+        .service-card.disabled {
+            opacity: 0.7;
+            background: var(--input-bg);
+        }
+
+        .service-icon-bg {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-8);
+        }
+
+        .service-icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-card-header {
+            margin-bottom: var(--spacing-8);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .service-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-navy);
+        }
+
+        .service-badge {
+            background: var(--light-blue);
+            color: var(--professional-blue);
+            padding: var(--spacing-4) var(--spacing-8);
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .service-badge.secondary {
+            background: var(--light-blue-alt);
+            color: var(--dark-blue-alt);
+        }
+
+        .service-badge.tertiary {
+            background: #1c0a00;
+            color: white;
+        }
+
+        .service-description {
+            font-size: 14px;
+            color: var(--label-text);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-12);
+        }
+
+        .service-features {
+            font-size: 12px;
+            color: var(--label-text);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-12);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+        }
+
+        .service-feature-item {
+            display: flex;
+            gap: var(--spacing-8);
+            align-items: flex-start;
+        }
+
+        .service-feature-item::before {
+            content: '✓';
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--professional-blue);
+            font-weight: 700;
+        }
+
+        .service-tags {
+            display: flex;
+            gap: var(--spacing-4);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-12);
+        }
+
+        .service-tag {
+            background: var(--light-blue-alt2);
+            color: var(--input-text);
+            padding: var(--spacing-4) var(--spacing-8);
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .service-cta {
+            width: 100%;
+            padding: var(--spacing-8);
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            transition: all 0.3s;
+        }
+
+        .service-cta.primary {
+            background: var(--dark-navy);
+            color: white;
+        }
+
+        .service-cta.primary:hover {
+            background: #001530;
+        }
+
+        .service-cta.secondary {
+            background: var(--professional-blue);
+            color: white;
+        }
+
+        .service-cta.secondary:hover {
+            background: #154678;
+        }
+
+        .service-cta.tertiary {
+            background: #1c0a00;
+            color: white;
+        }
+
+        .service-cta.tertiary:hover {
+            background: #2d1008;
+        }
+
+        .service-cta.disabled {
+            background: var(--light-blue-alt2);
+            color: var(--placeholder);
+            cursor: not-allowed;
+        }
+
+        /* ========== BOOKING FORM SECTION ========== */
+        .form-section {
+            background: white;
+            padding: var(--spacing-48) var(--spacing-32);
+        }
+
+        .form-container {
+            max-width: 832px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: var(--spacing-32);
+            box-shadow: var(--service-shadow);
+        }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: var(--spacing-8);
+            text-align: center;
+        }
+
+        .form-subtitle {
+            font-size: 14px;
+            color: var(--label-text);
+            text-align: center;
+            margin-bottom: var(--spacing-32);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-24);
+        }
+
+        .form-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.55px;
+            text-transform: uppercase;
+            color: var(--label-text);
+            display: block;
+            margin-bottom: var(--spacing-8);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--spacing-12) var(--spacing-16);
+            background: var(--input-bg);
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--input-text);
+            font-family: var(--font-primary);
+            transition: all 0.3s;
+        }
+
+        .form-input::placeholder {
+            color: var(--placeholder);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--professional-blue);
+            background: white;
+        }
+
+        .form-notice {
+            background: var(--light-blue);
+            border: 1px solid var(--light-blue-alt2);
+            border-radius: 12px;
+            padding: var(--spacing-12);
+            margin-bottom: var(--spacing-24);
+            font-size: 12px;
+            line-height: 1.6;
+            color: var(--input-text);
+            display: flex;
+            gap: var(--spacing-12);
+        }
+
+        .form-notice-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--professional-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: var(--spacing-16);
+            background: var(--dark-navy);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            box-shadow: var(--submit-shadow);
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-8);
+        }
+
+        .form-submit:hover {
+            background: #001530;
+        }
+
+        .form-submit:disabled {
+            background: var(--placeholder);
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            background: #d1fae5;
+            color: #065f46;
+            padding: var(--spacing-16);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-24);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .error-message {
+            display: none;
+            background: #fee2e2;
+            color: #991b1b;
+            padding: var(--spacing-16);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-24);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* ========== OTHER SECTIONS ========== */
+        .how-it-works {
+            background: #f9fafb;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-24);
+            margin-top: var(--spacing-24);
+        }
+
+        .timeline-item {
+            text-align: center;
+        }
+
+        .timeline-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--professional-blue);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .timeline-description {
+            font-size: 14px;
+            color: var(--label-text);
+            line-height: 1.6;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--deep-navy);
+            color: white;
+            padding: var(--spacing-48) var(--spacing-32);
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-32);
+            margin-bottom: var(--spacing-24);
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-16);
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-12);
+        }
+
+        .footer-column a {
+            color: var(--body-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin-bottom: var(--spacing-16);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            color: var(--body-light);
+        }
+
+        /* ========== FLOATING CTA ========== */
+        .floating-cta {
+            position: fixed;
+            bottom: env(safe-area-inset-bottom, 20px);
+            right: 20px;
+            display: flex;
+            gap: var(--spacing-12);
+            z-index: 500;
+        }
+
+        .floating-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-btn.whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .floating-btn.phone {
+            background: var(--professional-blue);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: var(--spacing-32) var(--spacing-16);
+            }
+            .form-container {
+                padding: var(--spacing-24) var(--spacing-16);
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            .floating-cta {
+                flex-direction: column;
+                gap: var(--spacing-8);
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 640px) {
+            .section {
+                padding: var(--spacing-24) var(--spacing-12);
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 20px;
+                margin-bottom: var(--spacing-24);
+            }
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-24);
+            }
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* ========== UTILITY ========== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 { margin-top: var(--spacing-16); }
+        .mt-8 { margin-top: var(--spacing-32); }
+        .mb-4 { margin-bottom: var(--spacing-16); }
+        .mb-8 { margin-bottom: var(--spacing-32); }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">GoKeelai<span>.</span></div>
+        <nav class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#booking">Book Now</a></li>
+        </nav>
+        <div class="header-cta">
+            <a href="tel:+918682920595" class="phone-link">+91 8682920595</a>
+            <button class="book-btn" onclick="scrollToBooking()">Book a Ride</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="trust-badge">Kilakarai's Official Transit Network</div>
+                <h1>Your Ride. <span class="peach">Your Way.</span></h1>
+                <p class="hero-subtitle-1">Reliable rides, local journeys and trusted drivers — made simple with GoKeelai.</p>
+                <p class="hero-subtitle-2">Cab, Auto and Driver on Demand services across Kilakarai and surrounding regions.</p>
+                <div class="hero-buttons">
+                    <button class="hero-btn primary" onclick="scrollToBooking()">Book a Ride</button>
+                    <button class="hero-btn secondary" onclick="openWhatsApp()">Book on WhatsApp</button>
+                    <a href="tel:+918682920595" class="hero-btn tertiary">+91 8682920595</a>
+                </div>
+                <div class="trust-features">
+                    <div class="trust-feature">100% Vetted Drivers</div>
+                    <div class="trust-feature">24/7 Available</div>
+                </div>
+            </div>
+            <div class="booking-card fade-in">
+                <div class="booking-card-header">
+                    <div class="booking-card-title">Instant Dispatch Desk</div>
+                    <div class="booking-card-heading">Where do you want to go?</div>
+                </div>
+                <div class="service-tabs">
+                    <button class="service-tab active" data-service="cab">Cab Service</button>
+                    <button class="service-tab" data-service="auto">Auto Rickshaw</button>
+                    <button class="service-tab" data-service="driver">Driver on Demand</button>
+                    <button class="service-tab disabled" data-service="bike">Bike Taxi Soon</button>
+                </div>
+                <div class="booking-input-group">
+                    <label class="booking-label">
+                        <span class="booking-label-dot pickup"></span>
+                        Pickup Point
+                    </label>
+                    <input type="text" class="booking-input" id="heroPickup" placeholder="Enter location">
+                </div>
+                <div class="booking-input-group">
+                    <label class="booking-label">
+                        <span class="booking-label-dot destination"></span>
+                        Destination
+                    </label>
+                    <input type="text" class="booking-input" id="heroDestination" placeholder="Enter destination">
+                </div>
+                <div class="booking-disclaimer">
+                    <span>ℹ️</span>
+                    <span>Availability & fare verified personally by GoKeelai admin</span>
+                </div>
+                <button class="booking-submit" onclick="scrollToBooking()">Continue to Booking →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section">
+        <h2 class="section-title">Choose Your Ride</h2>
+        <div class="services-grid">
+            <!-- CAB SERVICE -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-bg" style="background: var(--light-blue);">
+                        <div class="service-icon">🚗</div>
+                    </div>
+                    <div class="service-card-header">
+                        <h3 class="service-card-title">Cab Service</h3>
+                        <span class="service-badge">AC & Comfort</span>
+                    </div>
+                    <p class="service-description">Comfortable rides with trusted vehicles and drivers for families and executives.</p>
+                    <div class="service-features">
+                        <div class="service-feature-item">Spacious AC Sedans & Innovas</div>
+                        <div class="service-feature-item">Airport and Station Transfers</div>
+                        <div class="service-feature-item">Outstation Family Pilgrimage Trips</div>
+                    </div>
+                </div>
+                <button class="service-cta primary">Book a Cab</button>
+            </div>
+
+            <!-- AUTO RICKSHAW -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-bg" style="background: var(--light-blue-alt);">
+                        <div class="service-icon">🛺</div>
+                    </div>
+                    <div class="service-card-header">
+                        <h3 class="service-card-title">Auto Rickshaw</h3>
+                        <span class="service-badge secondary">Local Rides</span>
+                    </div>
+                    <p class="service-description">Quick and convenient local rides around Kilakarai streets, markets, and shores.</p>
+                    <div class="service-features">
+                        <div class="service-feature-item">Punctual doorstep pickup</div>
+                        <div class="service-feature-item">Bazaar & hospital visits</div>
+                        <div class="service-feature-item">Transparent community rates</div>
+                    </div>
+                </div>
+                <button class="service-cta secondary">Book an Auto</button>
+            </div>
+
+            <!-- DRIVER ON DEMAND -->
+            <div class="service-card highlighted">
+                <div>
+                    <div class="service-icon-bg" style="background: var(--peach-accent);">
+                        <div class="service-icon">👔</div>
+                    </div>
+                    <div class="service-card-header">
+                        <h3 class="service-card-title">Driver on Demand</h3>
+                        <span class="service-badge tertiary">Acting Driver</span>
+                    </div>
+                    <p class="service-description">Your Vehicle. Our Driver. Professional chauffeurs for your car or SUV.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Family Trips</span>
+                        <span class="service-tag">Outstation</span>
+                        <span class="service-tag">Functions & Events</span>
+                    </div>
+                    <div class="service-features">
+                        <div class="service-feature-item">Licensed for manual & automatic</div>
+                        <div class="service-feature-item">Polite, sober & verified records</div>
+                    </div>
+                </div>
+                <button class="service-cta tertiary">Request a Driver</button>
+            </div>
+
+            <!-- BIKE TAXI (COMING SOON) -->
+            <div class="service-card disabled">
+                <div>
+                    <div class="service-icon-bg" style="background: var(--light-blue-alt2); color: var(--placeholder);">
+                        <div class="service-icon">🏍️</div>
+                    </div>
+                    <div class="service-card-header">
+                        <h3 class="service-card-title" style="color: var(--placeholder);">Bike Taxi</h3>
+                        <span class="service-badge" style="background: var(--body-light); color: var(--placeholder);">Coming Soon</span>
+                    </div>
+                    <p class="service-description" style="color: var(--placeholder);">Single-rider swift bike transit is coming soon across Kilakarai alleys.</p>
+                    <div style="background: var(--light-blue); padding: var(--spacing-8); border-radius: 4px; text-align: center; font-size: 12px; color: var(--label-text);">Launching in Q3 2025</div>
+                </div>
+                <button class="service-cta disabled">Not Available Yet</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="section how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-number">1</div>
+                <div class="timeline-title">Enter Details</div>
+                <div class="timeline-description">Share your pickup and destination with travel preferences</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">2</div>
+                <div class="timeline-title">Get Verified Quote</div>
+                <div class="timeline-description">Receive instant fare and driver details on WhatsApp</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">3</div>
+                <div class="timeline-title">Confirm & Track</div>
+                <div class="timeline-description">Confirm the booking and track your driver in real-time</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">4</div>
+                <div class="timeline-title">Enjoy Your Ride</div>
+                <div class="timeline-description">Experience safe, comfortable and verified GoKeelai service</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN BOOKING FORM -->
+    <section id="booking" class="form-section">
+        <div class="form-container">
+            <h2 class="form-title">Book Your Journey Now</h2>
+            <p class="form-subtitle">Fill in your details below. Our dispatch team will call you with fare confirmation.</p>
+            
+            <div id="successMessage" class="success-message">✓ Thank you! You'll receive a WhatsApp message shortly with your booking confirmation.</div>
+            <div id="errorMessage" class="error-message">✗ Please fill in all required fields</div>
+
+            <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label" for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number (+91) *</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g. 9876543210" required>
+                </div>
+
+                <div class="form-notice">
+                    <div class="form-notice-icon">ℹ️</div>
+                    <div>
+                        <strong>Human Verified Dispatch:</strong> After submitting, you will receive an instant WhatsApp confirmation code and exact fare quote from our dispatch manager before the trip is finalized. Manual UPI payment QR details will be shared once your cab or acting driver is reserved.
+                    </div>
+                </div>
+
+                <button type="submit" class="form-submit">
+                    ✓ Submit Journey Inquiry
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>GoKeelai</h3>
+                <p style="font-size: 14px; line-height: 1.6;">Your Ride. Your Way. Reliable transportation for Kilakarai and beyond.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">Cab Service</a></li>
+                    <li><a href="#services">Auto Rickshaw</a></li>
+                    <li><a href="#services">Driver on Demand</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="tel:+918682920595">Call Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="tel:+918682920595">+91 8682920595</a></li>
+                    <li><a href="https://wa.me/918682920595" target="_blank">WhatsApp</a></li>
+                    <li><a href="https://maps.google.com/?q=Kilakarai,Tamil+Nadu" target="_blank">Kilakarai, TN</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GoKeelai Transportation. All rights reserved. | Your Ride. Your Way.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING CTA BUTTONS -->
+    <div class="floating-cta">
+        <button class="floating-btn whatsapp" onclick="openWhatsApp()" title="Chat on WhatsApp">💬</button>
+        <button class="floating-btn phone" onclick="callUs()" title="Call Us">☎️</button>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFe-5qgCYrLHhp6Km78Ih9Nm0zVKxjVyY49JJH12YWf33DE56b6fAsm9GAEk712sgA/exec';
+        const WHATSAPP_NUMBER = '918682920595';
+
+        function scrollToBooking() {
+            const bookingSection = document.getElementById('booking');
+            bookingSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openWhatsApp() {
+            const message = "Hi GoKeelai! I'd like to book a ride. Can you help?";
+            const encodedMsg = encodeURIComponent(message);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`, '_blank');
+        }
+
+        function callUs() {
+            window.location.href = 'tel:+918682920595';
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            const form = document.getElementById('bookingForm');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            // Hide messages
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+
+            // Validate
+            if (!name || !phone) {
+                errorMsg.style.display = 'block';
+                errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Phone validation (10 digits)
+            if (!/^\d{10}$/.test(phone)) {
+                errorMsg.textContent = '✗ Please enter a valid 10-digit phone number';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            // Prepare data
+            const url = SCRIPT_URL + "?" + new URLSearchParams({ 
+                name: name, 
+                email: email, 
+                phone: phone 
+            });
+
+            // Fetch with GET + no-cors
+            fetch(url, { 
+                method: "GET", 
+                mode: "no-cors" 
+            })
+            .then(() => {
+                showSuccess();
+            })
+            .catch(() => {
+                showSuccess(); // Success anyway (no-cors can't check response)
+            });
+        }
+
+        function showSuccess() {
+            const form = document.getElementById('bookingForm');
+            const successMsg = document.getElementById('successMessage');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            successMsg.style.display = 'block';
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Reset form
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = '✓ Submit Journey Inquiry';
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        }
+
+        function showError() {
+            const errorMsg = document.getElementById('errorMessage');
+            const form = document.getElementById('bookingForm');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            errorMsg.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = '✓ Submit Journey Inquiry';
+        }
+
+        // Service tab switching
+        document.querySelectorAll('.service-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                if (!this.classList.contains('disabled')) {
+                    document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
